@@ -1,4 +1,5 @@
 # NodeJs-nodemailer
+npm install
 ## this for sending email via nodeJs
 i used gmail account for example
 
