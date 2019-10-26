@@ -1,4 +1,4 @@
-// this is for sending mail via Node js
+// this is for sending mail via Node js // https://nodemailer.com/about/
 
 const nodemailer = require('nodemailer');
 
@@ -14,19 +14,30 @@ const transporter = nodemailer.createTransport({
     auth:{
         user: 'alimeailer@gmail.com', // ur Email account
         pass:'' // ur email passowrd
-    }
+    } 
 });
 
 const mailOptions ={
-    from:'alimeailer@gmail.com',   // ur account (the sender)
+    // ur account (the sender)
+    from:'alimeailer@gmail.com',   
+    // (the receiver)
+    to:'',   // */ anyMail
+    
+    // titile
+    subject:'testing node mailer', 
 
-    to:'anyMail@gmail.com',  // (the receiver)
-
-    subject:'testing node mailer', // titile
-
-    //body message
+    //body message // for multi lines use this symbol ` `
     text:`Hi Ali testing mailer 
-            from node JS` // for multi lines `` 
+            from node JS` , 
+    
+    //attachments   https://nodemailer.com/message/attachments/
+    attachments: [
+        {   // file on disk as an attachment
+            filename: 'theFileName.pdf',
+            path: __dirname+'/theFileName.pdf' // stream this file
+        }
+    ]
+
 };
 
 transporter.sendMail(mailOptions,(errorHappned,info)=>{
